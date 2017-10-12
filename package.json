@@ -9,8 +9,9 @@
     "url": "git@github.com:w-lianfu/hwCloud.git"
   },
   "scripts": {
-    "start": "webpack --hot --color",
-    "server": "webpack-dev-server --hot --color --progress"
+    "start": "webpack --watch --hot --color",
+    "server": "webpack-dev-server --hot --color --progress",
+    "clean": "rm -rf public/app.js && rm -rf public/assets"
   },
   "dependencies": {
     "autoprefixer": "^7.1.5",
@@ -38,7 +39,11 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-router-dom": "^4.2.2",
+    "react-slick": "^0.15.4",
     "sass-loader": "^6.0.6",
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.74.2",
+    "slick-carousel": "^1.8.1",
     "style-loader": "^0.19.0",
     "styled-components": "^2.2.1",
     "url-loader": "^0.6.2",

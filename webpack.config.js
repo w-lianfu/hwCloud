@@ -20,7 +20,6 @@ let config = {
       },
       {
         test: /\.css$/,
-        exclude: /node_modules/,
         use: [
           'style-loader',
           {
@@ -46,6 +45,10 @@ let config = {
           'postcss-loader',
           'sass-loader'
         ]
+      },
+      {
+        test: /\.(png|jpeg|jpg|gif|svg|woff|woff2|ttf|eot|ico)$/,
+        use: 'file-loader?name=assets/[name].[hash:5].[ext]'
       }
     ]
   },
@@ -55,10 +58,7 @@ let config = {
     compress: true,
     hot: true,
     port: 9000,
-    inline: true,
-    allowedHosts: [
-      'cloud.com'
-    ]
+    inline: true
   }
 }
 

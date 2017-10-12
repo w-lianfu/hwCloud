@@ -5,6 +5,10 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Home from './container/home'
 import Promotion from './container/promotion'
 
+import 'semantic-ui-css/semantic.min.css'
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
+
 class App extends Component {
   render() {
     return (
