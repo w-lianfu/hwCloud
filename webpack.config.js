@@ -33,7 +33,7 @@ let config = {
       },
       {
         test: /\.scss$/,
-        exclude: /node_modules/,
+        // exclude: /node_modules/,
         use: [
           'style-loader',
           {

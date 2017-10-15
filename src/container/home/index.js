@@ -2,11 +2,9 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { observer } from 'mobx-react'
 
-import ListStore from '../store/home/listStore'
+import CDCarousel from './CDCarousel'
 
 import './scss/index.scss'
-
-let store = new ListStore()
 
 @observer
 class Home extends Component {
@@ -14,17 +12,13 @@ class Home extends Component {
     super(props)
   }
 
-  increment = () => {
-    store.increment()
-  }
-
   render() {
     return (
-      <div>
+      <section className='home'>
+        <CDCarousel />
         <p onClick={this.increment}>Home Page...</p>
-        <p>{store.num}</p>
         <Link to='/promotion'>Promotion Page</Link>
-      </div>
+      </section>
     )
   }
 }

@@ -1,0 +1,13 @@
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input:focus, button:focus, a:focus, image:focus {
+  outline: none;
+}
+
+::selection {
+  background: #333;
+  color: #fff;
+}
