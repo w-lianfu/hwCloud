@@ -1,0 +1,66 @@
+@import '../../scss/color.scss';
+@import '../../scss/size.scss';
+
+.cd-notice {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 465px;
+  width: 100%;
+
+  a {
+    display: flex;
+    align-items: center;
+    width: 290px;
+    height: 120px;
+    background: $white;
+    margin-right: 1px;
+
+    &:hover {
+      box-shadow: 0px 0px 2px #fff;
+
+      span {
+        color: $mainRed;
+      }
+    }
+
+    .notice-icon {
+      background: url('/img/notice.png');
+      width: 46px;
+      height: 46px;
+      margin: 0 10px 0 0;
+    }
+
+    &:nth-child(2) {
+      .notice-icon {
+        background: url('/img/notice.png') 46px 0;
+      }
+    }
+    &:nth-child(3) {
+      .notice-icon {
+        background: url('/img/notice.png') 92px 0;
+      }
+    }
+    &:last-child {
+      .notice-icon {
+        background: url('/img/notice.png') 138px 0;
+      }
+    }
+
+    p:last-child {
+      display: flex;
+      flex-direction: column;
+      color: $black;
+
+      span {
+        font-size: $size16;
+        margin-bottom: 5px;
+      }
+
+      i {
+        color: $c666;
+        font-style: normal;
+      }
+    }
+  }
+}

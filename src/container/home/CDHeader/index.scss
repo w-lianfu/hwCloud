@@ -1,0 +1,26 @@
+@import '../../scss/color.scss';
+
+.cd-header {
+  height: 46px;
+  background: $bgBlack;
+
+  nav {
+    height: 100%;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      color: $white;
+      height: 100%;
+      padding: 0 20px;
+      box-sizing: content-box;
+      height: 40px;
+      border-top: 3px solid $bgBlack;
+
+      &:hover {
+        color: $mainRed;
+        border-bottom: 3px solid $mainRed;
+      }
+    }
+  }
+}
