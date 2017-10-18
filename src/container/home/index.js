@@ -5,6 +5,7 @@ import { observer } from 'mobx-react'
 import CDCarousel from './CDCarousel'
 import CDHeader from './CDHeader'
 import CDNotice from './CDNotice'
+import CDNews from './CDNews'
 
 import './scss/index.scss'
 
@@ -20,6 +21,7 @@ class Home extends Component {
         <CDHeader />
         <CDCarousel />
         <CDNotice />
+        <CDNews />
         <p onClick={this.increment}>Home Page...</p>
         <Link to='/promotion'>Promotion Page</Link>
       </section>

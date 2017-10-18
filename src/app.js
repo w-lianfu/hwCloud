@@ -7,6 +7,7 @@ import Promotion from './container/promotion'
 
 import 'semantic-ui-css/semantic.min.css'
 import './container/scss/common.scss'
+import './container/scss/override.scss'
 
 class App extends Component {
   render() {

@@ -1,0 +1,17 @@
+@import './color.scss';
+
+.slick-dots {
+  bottom: 150px;
+  li {
+    button:before {
+      color: $white;
+      opacity: 1.0;
+      font-size: 10px;
+    }
+    &.slick-active button:before {
+      color: $mainRed;
+      opacity: 1.0;
+      font-size: 10px;
+    }
+  }
+}
