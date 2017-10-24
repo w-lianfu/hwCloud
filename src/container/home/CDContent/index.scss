@@ -1,0 +1,30 @@
+@import '../../scss/color';
+
+.cd-content {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 50px 0;
+
+  h2 {
+    font-size: 24px;
+    color: $c333;
+    font-weight: 500;
+  }
+  h3 {
+    font-size: 18px;
+    color: $c999;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  div {
+    &:first-child, &:last-child {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+    &:nth-child(2) {
+      margin: 30px 0 15px 0;
+    }
+  }
+}

@@ -6,6 +6,7 @@ import CDCarousel from './CDCarousel'
 import CDHeader from './CDHeader'
 import CDNotice from './CDNotice'
 import CDNews from './CDNews'
+import CDContent from './CDContent'
 
 import './scss/index.scss'
 
@@ -22,6 +23,7 @@ class Home extends Component {
         <CDCarousel />
         <CDNotice />
         <CDNews />
+        <CDContent />
         <p onClick={this.increment}>Home Page...</p>
         <Link to='/promotion'>Promotion Page</Link>
       </section>

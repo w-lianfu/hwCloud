@@ -17,7 +17,7 @@ class CDNews extends Component {
   }
 
   componentDidMount() {
-    store.getNewsList('http://localhost:3000/news')
+    store.getNewsList('news')
   }
 
   render() {

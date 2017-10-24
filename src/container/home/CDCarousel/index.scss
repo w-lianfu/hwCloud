@@ -1,4 +1,7 @@
+@import '../../scss/color.scss';
+
 .CDCarousel {
+  background: $clBg;
   a {
     display: flex;
     width: 100%;

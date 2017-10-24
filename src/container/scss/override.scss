@@ -19,3 +19,28 @@
 .popup {
   white-space: nowrap;
 }
+
+.ui.vertical.menu {
+  width: 160px;
+  .item {
+    font-size: 15px;
+  }
+}
+.ui.secondary.pointing.menu .active.item {
+  background: $mainRed;
+  color: $white;
+}
+.ui.secondary.vertical.pointing.menu .active.item {
+  border-color: $mainRed;
+}
+.ui.secondary.pointing.menu .active.item:hover {
+  border-color: $mainRed;
+  background: $mainRed;
+  color: $white;
+}
+.ui.secondary.pointing.menu .item {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 0 0 30px;
+}

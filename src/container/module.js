@@ -1,11 +1,10 @@
 let Module = {}
 
+Module.host = 'http://localhost:3000/'
+
 Module.getData = (url) => {
-  return fetch(url, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    }
+  return fetch(`${Module.host}${url}`, {
+    method: 'GET'
   }).then(response => {
     switch (response.status) {
       case 200:
