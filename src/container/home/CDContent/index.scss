@@ -24,7 +24,45 @@
       flex-direction: column;
     }
     &:nth-child(2) {
-      margin: 30px 0 15px 0;
+      display: flex;
+      align-items: flex-start;
+      margin: 40px 0 20px 0;
+
+      div.cd-content_box {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        width: 1038px;
+        margin: 0;
+        a {
+          color: $black;
+          width: 265px;
+          height: 163px;
+          padding-top: 10px;
+          margin: 0 40px;
+          border-top: 3px solid $white;
+          overflow: hidden;
+          
+          &:hover {
+            border-top: 3px solid $mainRed;
+            p:first-child {
+              color: $mainRed;
+            }
+          }
+          p {
+            &:first-child {
+              font-size: 14px;
+              font-weight: bold;
+              color: $c333;
+            }
+            &:last-child {
+              font-size: 12px;
+              color: $c666;
+              line-height: 20px;
+            }
+          }
+        }
+      }
     }
   }
 }

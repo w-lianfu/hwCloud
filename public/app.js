@@ -60,7 +60,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "057121c9de68359b1864"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "fa12664678fb306b23a6"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -13414,7 +13414,7 @@ exports = module.exports = __webpack_require__(51)(undefined);
 
 
 // module
-exports.push([module.i, ".slick-dots {\n  bottom: 150px; }\n  .slick-dots li button:before {\n    color: #fff;\n    opacity: 1.0;\n    font-size: 10px; }\n  .slick-dots li.slick-active button:before {\n    color: #e5392c;\n    opacity: 1.0;\n    font-size: 10px; }\n\n.popup {\n  white-space: nowrap; }\n\n.ui.vertical.menu {\n  width: 160px; }\n  .ui.vertical.menu .item {\n    font-size: 15px; }\n\n.ui.secondary.pointing.menu .active.item {\n  background: #e5392c;\n  color: #fff; }\n\n.ui.secondary.vertical.pointing.menu .active.item {\n  border-color: #e5392c; }\n\n.ui.secondary.pointing.menu .active.item:hover {\n  border-color: #e5392c;\n  background: #e5392c;\n  color: #fff; }\n\n.ui.secondary.pointing.menu .item {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  height: 40px;\n  padding: 0 0 0 30px; }\n", ""]);
+exports.push([module.i, ".slick-dots {\n  bottom: 150px; }\n  .slick-dots li button:before {\n    color: #fff;\n    opacity: 1.0;\n    font-size: 10px; }\n  .slick-dots li.slick-active button:before {\n    color: #e5392c;\n    opacity: 1.0;\n    font-size: 10px; }\n\n.popup {\n  white-space: nowrap; }\n\n.ui.vertical.menu {\n  width: 160px; }\n  .ui.vertical.menu .item {\n    font-size: 15px; }\n\n.ui.secondary.pointing.menu .active.item {\n  background: #e5392c;\n  color: #fff; }\n\n.ui.secondary.vertical.pointing.menu .active.item {\n  border-color: #e5392c; }\n\n.ui.secondary.pointing.menu .active.item:hover {\n  border-color: #e5392c;\n  background: #e5392c;\n  color: #fff; }\n\n.ui.secondary.pointing.menu .item {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  height: 42px;\n  padding: 0 0 0 30px; }\n", ""]);
 
 // exports
 
@@ -83613,6 +83613,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class;
+
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
@@ -83620,6 +83622,12 @@ var _react2 = _interopRequireDefault(_react);
 var _reactRouterDom = __webpack_require__(101);
 
 var _semanticUiReact = __webpack_require__(612);
+
+var _mobxReact = __webpack_require__(326);
+
+var _store = __webpack_require__(1156);
+
+var _store2 = _interopRequireDefault(_store);
 
 __webpack_require__(1155);
 
@@ -83631,7 +83639,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var CDContent = function (_Component) {
+var store = new _store2.default();
+
+var CDContent = (0, _mobxReact.observer)(_class = function (_Component) {
   _inherits(CDContent, _Component);
 
   function CDContent(props) {
@@ -83655,13 +83665,18 @@ var CDContent = function (_Component) {
   }
 
   _createClass(CDContent, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      store.getContentList('users/content');
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _this2 = this;
 
       var activeItem = this.state.activeItem;
 
-      var menus = ['计算', '存储', '网络', '安全', '数据库', '书记分析', '软件开发云', '新产品上线'];
+      var menus = ['计算', '存储', '网络', '安全', '数据库', '数据分析', '软件开发云', '新产品上线'];
       var list = menus.map(function (item) {
         return _react2.default.createElement(_semanticUiReact.Menu.Item, {
           name: item,
@@ -83669,6 +83684,23 @@ var CDContent = function (_Component) {
           active: activeItem === item,
           onClick: _this2.handleItemClick
         });
+      });
+
+      var content = store.contentList && store.contentList.slice(0, 6).map(function (item) {
+        return _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: '/product', key: item.id },
+          _react2.default.createElement(
+            'p',
+            null,
+            item.title
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            item.content
+          )
+        );
       });
 
       return _react2.default.createElement(
@@ -83695,6 +83727,11 @@ var CDContent = function (_Component) {
             _semanticUiReact.Menu,
             { pointing: true, secondary: true, vertical: true },
             list
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'cd-content_box' },
+            content
           )
         ),
         _react2.default.createElement(
@@ -83711,7 +83748,7 @@ var CDContent = function (_Component) {
   }]);
 
   return CDContent;
-}(_react.Component);
+}(_react.Component)) || _class;
 
 exports.default = CDContent;
 
@@ -83724,7 +83761,7 @@ exports = module.exports = __webpack_require__(51)(undefined);
 
 
 // module
-exports.push([module.i, ".cd-content {\n  width: 1200px;\n  margin: 0 auto;\n  padding: 50px 0; }\n  .cd-content h2 {\n    font-size: 24px;\n    color: #333;\n    font-weight: 500; }\n  .cd-content h3 {\n    font-size: 18px;\n    color: #999;\n    font-weight: 500;\n    margin: 0; }\n  .cd-content div:first-child, .cd-content div:last-child {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column; }\n  .cd-content div:nth-child(2) {\n    margin: 30px 0 15px 0; }\n", ""]);
+exports.push([module.i, ".cd-content {\n  width: 1200px;\n  margin: 0 auto;\n  padding: 50px 0; }\n  .cd-content h2 {\n    font-size: 24px;\n    color: #333;\n    font-weight: 500; }\n  .cd-content h3 {\n    font-size: 18px;\n    color: #999;\n    font-weight: 500;\n    margin: 0; }\n  .cd-content div:first-child, .cd-content div:last-child {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column; }\n  .cd-content div:nth-child(2) {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: start;\n        -ms-flex-align: start;\n            align-items: flex-start;\n    margin: 40px 0 20px 0; }\n    .cd-content div:nth-child(2) div.cd-content_box {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row;\n              flex-direction: row;\n      width: 1038px;\n      margin: 0; }\n      .cd-content div:nth-child(2) div.cd-content_box a {\n        color: #000;\n        width: 265px;\n        height: 163px;\n        padding-top: 10px;\n        margin: 0 40px;\n        border-top: 3px solid #fff;\n        overflow: hidden; }\n        .cd-content div:nth-child(2) div.cd-content_box a:hover {\n          border-top: 3px solid #e5392c; }\n          .cd-content div:nth-child(2) div.cd-content_box a:hover p:first-child {\n            color: #e5392c; }\n        .cd-content div:nth-child(2) div.cd-content_box a p:first-child {\n          font-size: 14px;\n          font-weight: bold;\n          color: #333; }\n        .cd-content div:nth-child(2) div.cd-content_box a p:last-child {\n          font-size: 12px;\n          color: #666;\n          line-height: 20px; }\n", ""]);
 
 // exports
 
@@ -83759,6 +83796,135 @@ if(true) {
 	// When the module is disposed, remove the <style> tags
 	module.hot.dispose(function() { update(); });
 }
+
+/***/ }),
+/* 1156 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _dec, _desc, _value, _class, _descriptor;
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _mobx = __webpack_require__(327);
+
+var _module = __webpack_require__(503);
+
+var _module2 = _interopRequireDefault(_module);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _initDefineProp(target, property, descriptor, context) {
+  if (!descriptor) return;
+  Object.defineProperty(target, property, {
+    enumerable: descriptor.enumerable,
+    configurable: descriptor.configurable,
+    writable: descriptor.writable,
+    value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+  });
+}
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+  var desc = {};
+  Object['ke' + 'ys'](descriptor).forEach(function (key) {
+    desc[key] = descriptor[key];
+  });
+  desc.enumerable = !!desc.enumerable;
+  desc.configurable = !!desc.configurable;
+
+  if ('value' in desc || desc.initializer) {
+    desc.writable = true;
+  }
+
+  desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+    return decorator(target, property, desc) || desc;
+  }, desc);
+
+  if (context && desc.initializer !== void 0) {
+    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+    desc.initializer = undefined;
+  }
+
+  if (desc.initializer === void 0) {
+    Object['define' + 'Property'](target, property, desc);
+    desc = null;
+  }
+
+  return desc;
+}
+
+function _initializerWarningHelper(descriptor, context) {
+  throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+}
+
+(0, _mobx.useStrict)(true);
+
+var ContentStore = (_dec = _mobx.action.bound, (_class = function () {
+  function ContentStore() {
+    _classCallCheck(this, ContentStore);
+
+    _initDefineProp(this, 'contentList', _descriptor, this);
+  }
+
+  _createClass(ContentStore, [{
+    key: 'getContentList',
+    value: function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(url) {
+        var _this = this;
+
+        var data;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _module2.default.getData(url);
+
+              case 2:
+                data = _context.sent;
+
+                (0, _mobx.runInAction)(function () {
+                  _this.contentList = data && data.data;
+                });
+
+              case 4:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function getContentList(_x) {
+        return _ref.apply(this, arguments);
+      }
+
+      return getContentList;
+    }()
+  }]);
+
+  return ContentStore;
+}(), (_descriptor = _applyDecoratedDescriptor(_class.prototype, 'contentList', [_mobx.observable], {
+  enumerable: true,
+  initializer: function initializer() {
+    return null;
+  }
+}), _applyDecoratedDescriptor(_class.prototype, 'getContentList', [_dec], Object.getOwnPropertyDescriptor(_class.prototype, 'getContentList'), _class.prototype)), _class));
+exports.default = ContentStore;
 
 /***/ })
 /******/ ]);
